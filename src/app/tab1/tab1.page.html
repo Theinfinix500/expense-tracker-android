@@ -1,17 +1,135 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 1
-    </ion-title>
-  </ion-toolbar>
+  <app-header></app-header>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" class="ion-padding">
+  <!-- available balance -->
+  <div class="mt-6">
+    <app-balance></app-balance>
+  </div>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <div class="mt-12 flex items-center justify-between gap-5">
+    <!-- Income -->
+    <div
+      class="flex flex-col px-[18px] py-[14px] w-48 h-40 bg-emerald-50 rounded-3xl"
+    >
+      <div class="w-[52px] h-[53px] bg-emerald-600 rounded-2xl"></div>
+      <div class="mt-6">
+        <div
+          class="text-neutral-950 text-base font-normal font-['Inter'] tracking-wide"
+        >
+          Income
+        </div>
+        <div
+          class="text-zinc-800 text-2xl font-bold font-['Inter'] tracking-wide"
+        >
+          $5000
+        </div>
+      </div>
+    </div>
+    <!-- Expense -->
+    <div
+      class="flex flex-col px-[18px] py-[14px] w-48 h-40 bg-rose-50 rounded-3xl"
+    >
+      <div class="w-[52px] h-[53px] bg-red-400 rounded-2xl"></div>
+      <div class="mt-6">
+        <div
+          class="text-neutral-950 text-base font-normal font-['Inter'] tracking-wide"
+        >
+          Expenses
+        </div>
+        <div
+          class="text-zinc-800 text-2xl font-bold font-['Inter'] tracking-wide"
+        >
+          $1200
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-[70px]">
+    <div class="flex items-center justify-between">
+      <!-- Recent Transaction -->
+      <div
+        class="text-right text-neutral-900 text-xl font-bold font-['Inter'] tracking-wide"
+      >
+        Recent Transaction
+      </div>
+
+      <!-- See All -->
+      <div
+        class="w-24 h-10 flex items-center justify-center bg-indigo-100 rounded-2xl"
+      >
+        <div
+          class="text-right text-indigo-600 text-base font-normal font-['Inter'] tracking-wide"
+        >
+          See All
+        </div>
+      </div>
+    </div>
+
+    <!-- Expense Cards -->
+    <div class="mt-[14px] flex flex-col gap-6">
+      <div class="p-4 bg-neutral-50 rounded-3xl">
+        <div class="flex items-center justify-between gap-[10px]">
+          <div class="w-[72px] h-[72px] bg-orange-100 rounded-3xl"></div>
+          <div class="flex flex-col flex-1">
+            <div
+              class="text-neutral-950 text-lg font-medium font-['Inter'] tracking-wide"
+            >
+              Shopping
+            </div>
+            <div
+              class="text-gray-500 text-base font-medium font-['Inter'] tracking-tight"
+            >
+              Some grocery
+            </div>
+          </div>
+
+          <div class="flex flex-col">
+            <div
+              class="text-right text-red-500 text-lg font-bold font-['Inter']"
+            >
+              - $320
+            </div>
+            <div
+              class="text-right text-gray-500 text-base font-medium font-['Inter'] tracking-tight"
+            >
+              10:00 AM
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="p-4 bg-neutral-50 rounded-3xl">
+        <div class="flex items-center justify-between gap-[10px]">
+          <div class="w-[72px] h-[72px] bg-indigo-100 rounded-3xl"></div>
+          <div class="flex flex-col flex-1">
+            <div
+              class="text-neutral-950 text-lg font-medium font-['Inter'] tracking-wide"
+            >
+              Subscription
+            </div>
+            <div
+              class="text-gray-500 text-base font-medium font-['Inter'] tracking-tight"
+            >
+              Netflix
+            </div>
+          </div>
+
+          <div class="flex flex-col">
+            <div
+              class="text-right text-red-500 text-lg font-bold font-['Inter']"
+            >
+              - $10
+            </div>
+            <div
+              class="text-right text-gray-500 text-base font-medium font-['Inter'] tracking-tight"
+            >
+              03:30 PM
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </ion-content>
