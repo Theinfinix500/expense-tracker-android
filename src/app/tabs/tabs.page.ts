@@ -9,7 +9,12 @@ import { IonicModule } from '@ionic/angular';
   imports: [IonicModule],
 })
 export class TabsPage {
+  selectedTab: string = '';
   public environmentInjector = inject(EnvironmentInjector);
 
   constructor() {}
+
+  setSelectedTab({ tab }: any) {
+    this.selectedTab = tab;
+  }
 }

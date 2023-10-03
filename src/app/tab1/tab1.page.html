@@ -2,7 +2,7 @@
   <app-header></app-header>
 </ion-header>
 
-<ion-content [fullscreen]="true" class="ion-padding">
+<ion-content [fullscreen]="true" class="ion-padding ion-margin-bottom">
   <!-- available balance -->
   <div class="mt-6">
     <app-balance></app-balance>
@@ -13,7 +13,15 @@
     <div
       class="flex flex-col px-[18px] py-[14px] w-48 h-40 bg-emerald-50 rounded-3xl"
     >
-      <div class="w-[52px] h-[53px] bg-emerald-600 rounded-2xl"></div>
+      <div
+        class="w-[52px] h-[53px] flex items-center justify-center bg-emerald-600 rounded-2xl"
+      >
+        <ion-icon
+          name="arrow-down-circle"
+          size="large"
+          class="text-white"
+        ></ion-icon>
+      </div>
       <div class="mt-6">
         <div
           class="text-neutral-950 text-base font-normal font-['Inter'] tracking-wide"
@@ -31,7 +39,15 @@
     <div
       class="flex flex-col px-[18px] py-[14px] w-48 h-40 bg-rose-50 rounded-3xl"
     >
-      <div class="w-[52px] h-[53px] bg-red-400 rounded-2xl"></div>
+      <div
+        class="w-[52px] h-[53px] flex items-center justify-center bg-red-400 rounded-2xl"
+      >
+        <ion-icon
+          name="arrow-up-circle"
+          size="large"
+          class="text-white"
+        ></ion-icon>
+      </div>
       <div class="mt-6">
         <div
           class="text-neutral-950 text-base font-normal font-['Inter'] tracking-wide"
@@ -72,7 +88,15 @@
     <div class="mt-[14px] flex flex-col gap-6">
       <div class="p-4 bg-neutral-50 rounded-3xl">
         <div class="flex items-center justify-between gap-[10px]">
-          <div class="w-[72px] h-[72px] bg-orange-100 rounded-3xl"></div>
+          <div
+            class="w-[72px] h-[72px] flex items-center justify-center bg-orange-100 rounded-3xl"
+          >
+            <ion-icon
+              name="cart"
+              size="large"
+              class="text-orange-500"
+            ></ion-icon>
+          </div>
           <div class="flex flex-col flex-1">
             <div
               class="text-neutral-950 text-lg font-medium font-['Inter'] tracking-wide"
@@ -102,7 +126,15 @@
       </div>
       <div class="p-4 bg-neutral-50 rounded-3xl">
         <div class="flex items-center justify-between gap-[10px]">
-          <div class="w-[72px] h-[72px] bg-indigo-100 rounded-3xl"></div>
+          <div
+            class="w-[72px] h-[72px] flex items-center justify-center bg-indigo-100 rounded-3xl"
+          >
+            <ion-icon
+              name="videocam"
+              size="large"
+              class="text-indigo-500"
+            ></ion-icon>
+          </div>
           <div class="flex flex-col flex-1">
             <div
               class="text-neutral-950 text-lg font-medium font-['Inter'] tracking-wide"

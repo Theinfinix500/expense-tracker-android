@@ -1,1 +1,22 @@
+.fab-vertical-bottom {
+  bottom: 18px;
+}
 
+ion-tab-bar {
+  // position: absolute;
+  // bottom: 0;
+  // width: 100%;
+  // --background: transparent;
+
+  ion-tab-button {
+    --background: white;
+  }
+
+  svg {
+    width: 96px;
+    margin-top: 16px;
+    path {
+      fill: white;
+    }
+  }
+}
