@@ -1,17 +1,140 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Tab 2
+    <ion-buttons slot="start">
+      <ion-back-button size="large"></ion-back-button>
+    </ion-buttons>
+    <ion-title
+      class="text-neutral-900 text-lg font-bold font-['Inter'] tracking-wide"
+    >
+      Transactions
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" class="ion-padding">
+  <!-- Rectangle with chart -->
+  <div
+    class="h-[295px] bg-white rounded-3xl border-2 border-gray-100 px-5 py-[22px]"
+  >
+    <div class="flex justify-between gap-2 mb-8">
+      <div
+        class="w-[92px] h-[78px] rounded-2xl bg-emerald-600 border border-emerald-600"
+      >
+        <div class="h-full flex flex-col items-center justify-center">
+          <div class="text-white text-xs font-normal font-['Inter']">
+            Savings
+          </div>
+          <div class="flex">
+            <div class="text-white text-sm font-bold font-['Inter']">$</div>
+            <div class="text-white text-2xl font-bold font-['Inter']">547</div>
+          </div>
+        </div>
+      </div>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+      <div class="w-[138px] h-[31px]">
+        <div
+          class="h-full bg-white rounded-xl border border-gray-200 flex items-center gap-3 px-3 py-[6px]"
+        >
+          <div class="text-black text-sm font-medium font-['Inter']">
+            8/15 - 8/21
+          </div>
+          <ion-icon name="chevron-down"></ion-icon>
+        </div>
+      </div>
+    </div>
+    <div class="">
+      <div class="flex flex-col flex-auto h-[140px]">
+        <apx-chart
+          class="w-full h-full"
+          [chart]="chartOptions.chart"
+          [colors]="chartOptions.colors"
+          [dataLabels]="chartOptions.dataLabels"
+          [fill]="chartOptions.fill"
+          [grid]="chartOptions.grid"
+          [series]="chartOptions.series[chartValue]"
+          [stroke]="chartOptions.stroke"
+          [tooltip]="chartOptions.tooltip"
+          [xaxis]="chartOptions.xaxis"
+          [yaxis]="chartOptions.yaxis"
+        ></apx-chart>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-[40px]">
+    <div class="flex items-center justify-between">
+      <!-- Recent Transaction -->
+      <div
+        class="text-right text-neutral-900 text-lg font-bold font-['Inter'] tracking-wide"
+      >
+        Today
+      </div>
+    </div>
+
+    <!-- Expense Cards -->
+    <div class="mt-[14px] flex flex-col gap-[18px]">
+      <app-transaction-card
+        category="Food"
+        recordNote="Buy a ramen"
+        icon="restaurant"
+        [price]="-30"
+        [time]="currentDate"
+        categoryColor="rose"
+      ></app-transaction-card>
+      <app-transaction-card
+        category="shopping"
+        recordNote="Some grocery"
+        icon="cart"
+        [price]="320"
+        [time]="currentDate"
+        categoryColor="orange"
+      ></app-transaction-card>
+      <app-transaction-card
+        category="Subscription"
+        recordNote="Netflix"
+        icon="videocam"
+        [price]="-10"
+        [time]="currentDate"
+        categoryColor="indigo"
+      ></app-transaction-card>
+    </div>
+  </div>
+  <div class="mt-[44px]">
+    <div class="flex items-center justify-between">
+      <!-- Recent Transaction -->
+      <div
+        class="text-right text-neutral-900 text-lg font-bold font-['Inter'] tracking-wide"
+      >
+        Yesterday
+      </div>
+    </div>
+
+    <!-- Expense Cards -->
+    <div class="mt-[14px] flex flex-col gap-[18px]">
+      <app-transaction-card
+        category="Food"
+        recordNote="Buy a ramen"
+        icon="restaurant"
+        [price]="-30"
+        [time]="currentDate"
+        categoryColor="rose"
+      ></app-transaction-card>
+      <app-transaction-card
+        category="shopping"
+        recordNote="Some grocery"
+        icon="cart"
+        [price]="320"
+        [time]="currentDate"
+        categoryColor="orange"
+      ></app-transaction-card>
+      <app-transaction-card
+        category="Subscription"
+        recordNote="Netflix"
+        icon="videocam"
+        [price]="-10"
+        [time]="currentDate"
+        categoryColor="indigo"
+      ></app-transaction-card>
+    </div>
+  </div>
 </ion-content>

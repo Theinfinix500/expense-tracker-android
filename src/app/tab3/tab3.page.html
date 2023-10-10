@@ -1,17 +1,25 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Tab 3
-    </ion-title>
+    <div
+      class="h-[5.4rem] bg-slate-200 rounded-3xl py-[10px] px-[13px] mx-[18px] mt-[43px]"
+    >
+      <div class="h-full flex items-center justify-between gap-[18px]">
+        <ion-icon name="menu-outline" size="large"></ion-icon>
+        <div
+          class="text-zinc-700 text-[1.8rem] text-start flex-1 font-normal font-['Inter']"
+        >
+          Search in mail
+        </div>
+        <div class="w-[34px] h-[34px] bg-neutral-400 rounded-full">
+          <img
+            src="assets/images/profil-pic.jpeg"
+            alt="profil-pic"
+            class="w-full h-full object-cover rounded-full"
+          />
+        </div>
+      </div>
+    </div>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <app-explore-container name="Tab 3 page"></app-explore-container>
-</ion-content>
+<ion-content [fullscreen]="true"> </ion-content>

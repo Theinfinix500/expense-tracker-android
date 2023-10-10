@@ -1,27 +1,24 @@
-<div class="p-4 bg-neutral-50 rounded-3xl">
+<div class="p-[14px] bg-neutral-50 rounded-3xl">
   <div class="flex items-center justify-between gap-[10px]">
     <div
-      [class]="
-        'w-[72px] h-[72px] flex items-center justify-center bg-' +
-        categoryColor +
-        '-100 rounded-3xl'
-      "
+      [class]="'w-[65px] h-[65px] flex items-center justify-center rounded-3xl'"
+      [ngClass]="_categoryBgColor"
     >
       <!-- Should be configured -->
       <ion-icon
         [name]="icon"
         size="large"
-        [class]="'text-' + categoryColor + '-500'"
+        [ngClass]="_categoryTextColor"
       ></ion-icon>
     </div>
     <div class="flex flex-col flex-1">
       <div
-        class="capitalize text-neutral-950 text-lg font-medium font-['Inter'] tracking-wide"
+        class="capitalize text-neutral-950 text-base font-medium font-['Inter'] tracking-wide"
       >
         {{ category }}
       </div>
       <div
-        class="capitalize text-gray-500 text-base font-medium font-['Inter'] tracking-tight"
+        class="capitalize text-gray-500 text-sm font-medium font-['Inter'] tracking-tight"
       >
         {{ recordNote }}
       </div>
@@ -29,13 +26,13 @@
 
     <div class="flex flex-col">
       <div
-        class="text-right text-lg font-bold font-['Inter']"
+        class="text-right text-base font-bold font-['Inter']"
         [ngClass]="{ 'text-red-500': price < 0, 'text-green-500': price > 0 }"
       >
         {{ price | currency : "USD" : "$" : "2.0-2" }}
       </div>
       <div
-        class="text-right text-gray-500 text-base font-medium font-['Inter'] tracking-tight"
+        class="text-right text-gray-500 text-sm font-medium font-['Inter'] tracking-tight"
       >
         {{ time | date : "shortTime" }}
       </div>
