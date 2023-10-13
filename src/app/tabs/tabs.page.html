@@ -1,7 +1,7 @@
 <!-- TODO should make my own tabbar using my css skills -->
 <ion-tabs (ionTabsDidChange)="setSelectedTab($event)">
   <ion-fab vertical="bottom" horizontal="center">
-    <ion-fab-button color="danger">
+    <ion-fab-button color="danger" (click)="createRecord()">
       <ion-icon name="add" class="text-white" size="medium"></ion-icon>
     </ion-fab-button>
   </ion-fab>

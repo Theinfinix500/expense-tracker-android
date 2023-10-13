@@ -1,16 +1,16 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <div
-      class="h-[5.4rem] bg-slate-200 rounded-3xl py-[10px] px-[13px] mx-[18px] mt-[43px]"
+      class="h-12 bg-slate-200 rounded-3xl py-[10px] px-[13px] mx-[18px] mt-[43px]"
     >
-      <div class="h-full flex items-center justify-between gap-[18px]">
-        <ion-icon name="menu-outline" size="large"></ion-icon>
+      <div class="h-full flex items-center justify-between gap-4">
+        <ion-icon name="menu-outline" size="medium"></ion-icon>
         <div
-          class="text-zinc-700 text-[1.8rem] text-start flex-1 font-normal font-['Inter']"
+          class="text-zinc-700 text-base text-start flex-1 font-normal font-['Inter']"
         >
           Search in mail
         </div>
-        <div class="w-[34px] h-[34px] bg-neutral-400 rounded-full">
+        <div class="w-[30px] h-[30px] bg-neutral-400 rounded-full">
           <img
             src="assets/images/profil-pic.jpeg"
             alt="profil-pic"
@@ -22,4 +22,18 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true"> </ion-content>
+<ion-content class="ion-padding">
+  test page 3
+
+  <div
+    class="h-24 bg-pink-500 flex items-center justify-center rounded-lg text-white text-lg"
+  >
+    this is a REM based
+  </div>
+
+  <div
+    class="h-[96px] mt-[20px] bg-pink-500 flex items-center justify-center rounded-[8px] text-white text-[18px] leading-[28px]"
+  >
+    this is a PX based
+  </div>
+</ion-content>

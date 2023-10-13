@@ -1,0 +1,190 @@
+<ion-content class="ion-padding overflow-hidden">
+  <div class="">
+    <div>
+      <!-- save or cancel record -->
+      <div class="flex items-center justify-between">
+        <div class="flex items-center justify-between gap-[2px]">
+          <div class="flex-col justify-start items-start inline-flex">
+            <ion-icon
+              name="close-outline"
+              size="medium"
+              class="w-6 h-6"
+            ></ion-icon>
+          </div>
+          <div
+            class="text-blue-950 text-sm leading-4 font-medium font-['Inter']"
+          >
+            CANCEL
+          </div>
+        </div>
+        <div class="flex items-center justify-between gap-[2px]">
+          <div class="w-6 h-6 flex-col justify-start items-start inline-flex">
+            <ion-icon
+              name="checkmark-outline"
+              size="medium"
+              class="w-6 h-6"
+            ></ion-icon>
+          </div>
+          <div
+            class="text-blue-950 text-sm leading-4 font-medium font-['Inter']"
+          >
+            SAVE
+          </div>
+        </div>
+      </div>
+
+      <!-- record type -->
+      <div class="mt-2 flex items-center justify-between">
+        <div
+          class="text-slate-500 text-sm leading-4 font-medium font-['Inter']"
+        >
+          INCOME
+        </div>
+        <div class="h-7 w-px border border-[#677693]"></div>
+        <div class="flex items-center gap-2">
+          <div class="w-6 h-6 bg-sky-950 rounded-full">
+            <ion-icon
+              name="checkmark-outline"
+              size="medium"
+              class="w-6 h-6 text-white"
+            ></ion-icon>
+          </div>
+          <div
+            class="text-sky-950 text-sm leading-4 font-medium font-['Inter']"
+          >
+            EXPENSE
+          </div>
+        </div>
+        <div class="h-7 w-px border border-[#677693]"></div>
+        <div
+          class="text-slate-500 text-sm leading-4 font-medium font-['Inter']"
+        >
+          TRANSFER
+        </div>
+      </div>
+
+      <!-- date time -->
+      <div
+        class="flex items-center justify-between max-w-[330px] mt-3 mb-3 mx-auto"
+      >
+        <div class="text-indigo-950 text-base font-medium font-['Inter']">
+          Oct 10, 2023
+        </div>
+        <div class="h-7 w-px border border-[#677693]"></div>
+        <div class="text-indigo-950 text-base font-medium font-['Inter']">
+          10:10 AM
+        </div>
+      </div>
+    </div>
+
+    <!-- selects -->
+    <div class="grid grid-cols-2 grid-rows-2 gap-x-2 gap-y-[6px]">
+      <!-- Account -->
+      <div class="flex flex-col gap-[6px]">
+        <div
+          class="text-slate-500 text-sm leading-4 font-medium font-['Inter']"
+        >
+          Account
+        </div>
+        <div class="h-[48px] p-2 bg-white rounded-lg border border-gray-100">
+          <div class="min-h-[32px] flex items-center justify-center gap-[6px]">
+            <div
+              class="w-8 h-8 bg-violet-100 rounded-md border border-gray-100"
+            ></div>
+            <span class="text-indigo-950 text-base font-medium font-['Inter']"
+              >Card</span
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- Category -->
+      <div class="flex flex-col gap-[6px]">
+        <div
+          class="text-slate-500 text-sm leading-4 font-medium font-['Inter']"
+        >
+          Category
+        </div>
+        <div class="h-[48px] p-2 bg-white rounded-lg border border-gray-100">
+          <div class="min-h-[32px] flex items-center justify-center gap-[6px]">
+            <div class="w-8 h-8 bg-fuchsia-500 rounded-full"></div>
+            <span class="text-indigo-950 text-base font-medium font-['Inter']"
+              >Clothing</span
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- Payment Type -->
+      <div class="flex flex-col gap-[6px]">
+        <div
+          class="text-slate-500 text-sm leading-4 font-medium font-['Inter']"
+        >
+          Payment Type
+        </div>
+        <div class="h-[48px] p-2 bg-white rounded-lg border border-gray-100">
+          <div class="min-h-[32px] flex items-center justify-center gap-[6px]">
+            <span class="text-indigo-950 text-base font-medium font-['Inter']"
+              >Cash</span
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- Attachements -->
+
+      <div class="flex flex-col gap-[6px]">
+        <div
+          class="text-slate-500 text-sm leading-4 font-medium font-['Inter']"
+        >
+          Attachements
+        </div>
+        <div class="h-[48px] p-2 bg-white rounded-lg border border-gray-100">
+          <div class="min-h-[32px] flex items-center justify-center gap-[6px]">
+            <div class="flex items-center">
+              <ion-icon name="attach-outline" size="medium"></ion-icon>
+            </div>
+            <span class="text-indigo-950 text-base font-medium font-['Inter']"
+              >2 files</span
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- note -->
+    <div class="h-[90px] my-[10px] bg-white rounded-lg border border-gray-100">
+      <textarea
+        name=""
+        class="w-full h-full rounded-lg p-[10px] text-indigo-950 text-base font-medium font-['Inter'] outline-none"
+      >
+   test test
+      </textarea>
+    </div>
+
+    <!-- calculator -->
+    <div class="">
+      <!-- Calculator pad -->
+      <div
+        class="bg-white rounded-lg border border-gray-100 mb-[10px] py-1 px-5"
+      >
+        <div class="flex items-center justify-between gap-3">
+          <span
+            class="flex-1 text-right text-sky-950 text-6xl font-normal font-['Inter']"
+            >225</span
+          >
+          <ion-icon name="backspace-outline" size="large"></ion-icon>
+        </div>
+      </div>
+      <!-- Calculator digits -->
+      <div class="">
+        <div class="grid grid-cols-4 grid-rows-4 gap-1">
+          <app-calculator-button
+            *ngFor="let button of buttons"
+            [value]="button"
+          ></app-calculator-button>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

@@ -8,28 +8,28 @@
     <app-balance></app-balance>
   </div>
 
-  <div class="mt-[43px] flex items-center justify-between gap-5">
+  <div class="mt-[38px] flex items-center justify-between gap-5">
     <!-- Income -->
     <div
-      class="flex flex-col gap-[22px] px-4 py-[14px] w-[176px] bg-emerald-50 rounded-3xl"
+      class="flex-1 flex flex-col gap-[18px] px-[14px] py-3 bg-emerald-50 rounded-3xl"
     >
       <div
-        class="h-[48px] w-[48px] flex items-center justify-center bg-emerald-600 rounded-2xl"
+        class="h-[40px] w-[40px] flex items-center justify-center bg-emerald-600 rounded-2xl"
       >
         <ion-icon
           name="arrow-down-circle"
-          size="large"
+          size="medium"
           class="text-white"
         ></ion-icon>
       </div>
       <div>
         <div
-          class="mb-2 text-neutral-950 text-sm font-normal font-['Inter'] tracking-wide"
+          class="mb-2 text-neutral-950 text-xs font-normal font-['Inter'] tracking-wide"
         >
           Income
         </div>
         <div
-          class="text-zinc-800 text-xl font-bold font-['Inter'] tracking-wide"
+          class="text-zinc-800 text-lg font-bold font-['Inter'] tracking-wide"
         >
           $5000
         </div>
@@ -37,25 +37,25 @@
     </div>
     <!-- Expense -->
     <div
-      class="flex flex-col gap-[22px] px-4 py-[14px] w-[176px] bg-rose-50 rounded-3xl"
+      class="flex-1 flex flex-col gap-[18px] px-[14px] py-3 bg-rose-50 rounded-3xl"
     >
       <div
-        class="h-[48px] w-[48px] flex items-center justify-center bg-red-400 rounded-2xl"
+        class="h-[40px] w-[40px] flex items-center justify-center bg-red-400 rounded-2xl"
       >
         <ion-icon
           name="arrow-up-circle"
-          size="large"
+          size="medium"
           class="text-white"
         ></ion-icon>
       </div>
       <div>
         <div
-          class="mb-2 text-neutral-950 text-sm font-normal font-['Inter'] tracking-wide"
+          class="mb-2 text-neutral-950 text-xs font-normal font-['Inter'] tracking-wide"
         >
           Expenses
         </div>
         <div
-          class="text-zinc-800 text-xl font-bold font-['Inter'] tracking-wide"
+          class="text-zinc-800 text-lg font-bold font-['Inter'] tracking-wide"
         >
           $1200
         </div>
@@ -63,21 +63,21 @@
     </div>
   </div>
 
-  <div class="mt-[56px]">
+  <div class="mt-12">
     <div class="flex items-center justify-between">
       <!-- Recent Transaction -->
       <div
-        class="text-right text-neutral-900 text-lg font-bold font-['Inter'] tracking-wide"
+        class="text-right text-neutral-900 text-base font-bold font-['Inter'] tracking-wide"
       >
         Recent Transaction
       </div>
 
       <!-- See All -->
       <div
-        class="w-24 h-9 flex items-center justify-center bg-indigo-100 rounded-2xl"
+        class="w-20 h-[30px] flex items-center justify-center bg-indigo-100 rounded-2xl"
       >
         <div
-          class="text-right text-indigo-600 text-sm font-normal font-['Inter'] tracking-wide"
+          class="text-right text-indigo-600 text-xs font-normal font-['Inter'] tracking-wide"
         >
           See All
         </div>
@@ -85,7 +85,7 @@
     </div>
 
     <!-- Expense Cards -->
-    <div class="mt-[14px] flex flex-col gap-[18px]">
+    <div class="mt-3 flex flex-col gap-4">
       <app-transaction-card
         category="shopping"
         recordNote="Some grocery"
