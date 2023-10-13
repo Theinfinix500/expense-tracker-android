@@ -80,76 +80,41 @@
     <!-- selects -->
     <div class="grid grid-cols-2 grid-rows-2 gap-x-2 gap-y-[6px]">
       <!-- Account -->
-      <div class="flex flex-col gap-[6px]">
+      <app-select
+        label="Account"
+        selectedValue="Card"
+        (openModal)="openAttachementModal()"
+      >
         <div
-          class="text-slate-500 text-sm leading-4 font-medium font-['Inter']"
-        >
-          Account
-        </div>
-        <div class="h-[48px] p-2 bg-white rounded-lg border border-gray-100">
-          <div class="min-h-[32px] flex items-center justify-center gap-[6px]">
-            <div
-              class="w-8 h-8 bg-violet-100 rounded-md border border-gray-100"
-            ></div>
-            <span class="text-indigo-950 text-base font-medium font-['Inter']"
-              >Card</span
-            >
-          </div>
-        </div>
-      </div>
+          class="w-8 h-8 bg-violet-100 rounded-md border border-gray-100 select-icon"
+        ></div>
+      </app-select>
 
       <!-- Category -->
-      <div class="flex flex-col gap-[6px]">
-        <div
-          class="text-slate-500 text-sm leading-4 font-medium font-['Inter']"
-        >
-          Category
-        </div>
-        <div class="h-[48px] p-2 bg-white rounded-lg border border-gray-100">
-          <div class="min-h-[32px] flex items-center justify-center gap-[6px]">
-            <div class="w-8 h-8 bg-fuchsia-500 rounded-full"></div>
-            <span class="text-indigo-950 text-base font-medium font-['Inter']"
-              >Clothing</span
-            >
-          </div>
-        </div>
-      </div>
+      <app-select
+        label="Category"
+        selectedValue="Clothing"
+        (openModal)="openAttachementModal()"
+      >
+        <div class="w-8 h-8 bg-fuchsia-500 rounded-full select-icon"></div>
+      </app-select>
 
       <!-- Payment Type -->
-      <div class="flex flex-col gap-[6px]">
-        <div
-          class="text-slate-500 text-sm leading-4 font-medium font-['Inter']"
-        >
-          Payment Type
-        </div>
-        <div class="h-[48px] p-2 bg-white rounded-lg border border-gray-100">
-          <div class="min-h-[32px] flex items-center justify-center gap-[6px]">
-            <span class="text-indigo-950 text-base font-medium font-['Inter']"
-              >Cash</span
-            >
-          </div>
-        </div>
-      </div>
+      <app-select
+        label="Payment Type"
+        selectedValue="Cash"
+        (openModal)="openAttachementModal()"
+      >
+      </app-select>
 
       <!-- Attachements -->
-
-      <div class="flex flex-col gap-[6px]">
-        <div
-          class="text-slate-500 text-sm leading-4 font-medium font-['Inter']"
-        >
-          Attachements
-        </div>
-        <div class="h-[48px] p-2 bg-white rounded-lg border border-gray-100">
-          <div class="min-h-[32px] flex items-center justify-center gap-[6px]">
-            <div class="flex items-center">
-              <ion-icon name="attach-outline" size="medium"></ion-icon>
-            </div>
-            <span class="text-indigo-950 text-base font-medium font-['Inter']"
-              >2 files</span
-            >
-          </div>
-        </div>
-      </div>
+      <app-select
+        label="Attachements"
+        selectedValue="2 files"
+        (openModal)="openAttachementModal()"
+      >
+        <ion-icon name="attach-outline" size="medium"></ion-icon>
+      </app-select>
     </div>
 
     <!-- note -->
@@ -162,29 +127,8 @@
       </textarea>
     </div>
 
-    <!-- calculator -->
-    <div class="">
-      <!-- Calculator pad -->
-      <div
-        class="bg-white rounded-lg border border-gray-100 mb-[10px] py-1 px-5"
-      >
-        <div class="flex items-center justify-between gap-3">
-          <span
-            class="flex-1 text-right text-sky-950 text-6xl font-normal font-['Inter']"
-            >225</span
-          >
-          <ion-icon name="backspace-outline" size="large"></ion-icon>
-        </div>
-      </div>
-      <!-- Calculator digits -->
-      <div class="">
-        <div class="grid grid-cols-4 grid-rows-4 gap-1">
-          <app-calculator-button
-            *ngFor="let button of buttons"
-            [value]="button"
-          ></app-calculator-button>
-        </div>
-      </div>
+    <div>
+      <app-calculator></app-calculator>
     </div>
   </div>
 </ion-content>

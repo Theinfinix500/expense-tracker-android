@@ -1,0 +1,19 @@
+<div class="flex flex-col gap-[6px]">
+  <div class="text-slate-500 text-sm leading-4 font-medium font-['Inter']">
+    {{ label }}
+  </div>
+  <div
+    class="h-[48px] p-2 bg-white rounded-lg border border-gray-100 relative ion-activatable overflow-hidden"
+    (click)="openModal.emit()"
+  >
+    <ion-ripple-effect></ion-ripple-effect>
+    <div class="min-h-[32px] flex items-center justify-center gap-[6px]">
+      <div class="flex items-center">
+        <ng-content select="ion-icon,.select-icon"></ng-content>
+      </div>
+      <span class="text-indigo-950 text-base font-medium font-['Inter']">{{
+        selectedValue
+      }}</span>
+    </div>
+  </div>
+</div>

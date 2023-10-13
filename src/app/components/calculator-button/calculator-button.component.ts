@@ -16,7 +16,6 @@ export class CalculatorButtonComponent implements OnInit {
   ngOnInit() {}
 
   isNum(value) {
-    console.log('executed!!');
     if (value === 0) return true;
 
     return !!Number(value);

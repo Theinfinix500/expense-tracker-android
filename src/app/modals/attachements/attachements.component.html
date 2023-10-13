@@ -1,0 +1,11 @@
+<ion-content class="ion-padding">
+  <ion-button (click)="openCamera()">Open Webcam</ion-button>
+
+  <div *ngIf="imageElement" class="w-12 h-12 rounded-md">
+    <img
+      [src]="imageElement"
+      alt="pp"
+      class="rounded-md w-full h-full object-cover"
+    />
+  </div>
+</ion-content>

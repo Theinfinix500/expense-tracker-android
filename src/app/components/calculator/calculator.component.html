@@ -1,0 +1,24 @@
+<!-- calculator -->
+<div class="">
+  <!-- Calculator pad -->
+  <div
+    class="bg-white rounded-lg border border-gray-100 mb-[10px] py-1 px-5"
+  >
+    <div class="flex items-center justify-between gap-3">
+      <span
+        class="flex-1 text-right text-sky-950 text-6xl font-normal font-['Inter']"
+        >225</span
+      >
+      <ion-icon name="backspace-outline" size="large"></ion-icon>
+    </div>
+  </div>
+  <!-- Calculator digits -->
+  <div class="">
+    <div class="grid grid-cols-4 grid-rows-4 gap-1">
+      <app-calculator-button
+        *ngFor="let button of buttons"
+        [value]="button"
+      ></app-calculator-button>
+    </div>
+  </div>
+</div>
