@@ -1,133 +1,151 @@
-<ion-content class="ion-padding overflow-hidden">
-  <div class="">
+<ion-content class="overflow-hidden">
+  <div class="flex flex-col gap-2 h-full pb-2">
     <div>
-      <!-- save or cancel record -->
-      <div class="flex items-center justify-between">
-        <div class="flex items-center justify-between gap-[2px]">
-          <div class="flex-col justify-start items-start inline-flex">
-            <ion-icon
-              name="close-outline"
-              size="medium"
-              class="w-6 h-6"
-            ></ion-icon>
+      <div class="bg-[#001A4D]">
+        <!-- save or cancel record -->
+        <div class="flex items-center justify-between px-[26px] py-[13.5px]">
+          <div class="flex items-center justify-between gap-[2px]">
+            <div class="flex-col justify-start items-start inline-flex">
+              <ion-icon
+                name="close-outline"
+                size="medium"
+                class="w-6 h-6 text-white"
+              ></ion-icon>
+            </div>
+            <div
+              class="text-white text-sm leading-4 font-medium font-['Inter']"
+            >
+              CANCEL
+            </div>
           </div>
-          <div
-            class="text-blue-950 text-sm leading-4 font-medium font-['Inter']"
-          >
-            CANCEL
+          <div class="flex items-center justify-between gap-[2px]">
+            <div class="w-6 h-6 flex-col justify-start items-start inline-flex">
+              <ion-icon
+                name="checkmark-outline"
+                size="medium"
+                class="w-6 h-6 text-white"
+              ></ion-icon>
+            </div>
+            <div
+              class="text-white text-sm leading-4 font-medium font-['Inter']"
+            >
+              SAVE
+            </div>
           </div>
         </div>
-        <div class="flex items-center justify-between gap-[2px]">
-          <div class="w-6 h-6 flex-col justify-start items-start inline-flex">
-            <ion-icon
-              name="checkmark-outline"
-              size="medium"
-              class="w-6 h-6"
-            ></ion-icon>
-          </div>
-          <div
-            class="text-blue-950 text-sm leading-4 font-medium font-['Inter']"
-          >
-            SAVE
-          </div>
-        </div>
-      </div>
 
-      <!-- record type -->
-      <div class="mt-2 flex items-center justify-between">
-        <div
-          class="text-slate-500 text-sm leading-4 font-medium font-['Inter']"
-        >
-          INCOME
-        </div>
-        <div class="h-7 w-px border border-[#677693]"></div>
-        <div class="flex items-center gap-2">
-          <div class="w-6 h-6 bg-sky-950 rounded-full">
-            <ion-icon
-              name="checkmark-outline"
-              size="medium"
-              class="w-6 h-6 text-white"
-            ></ion-icon>
+        <!-- record type -->
+        <div class="flex items-center">
+          <div
+            (click)="changeRecordType('INCOME')"
+            [ngClass]="{ 'active-record-type': recordType === 'INCOME' }"
+            class="flex-1 px-4 py-[17.5px] flex items-center justify-center"
+          >
+            <span
+              class="block text-white text-sm leading-4 font-medium font-['Inter']"
+              >INCOME</span
+            >
           </div>
           <div
-            class="text-sky-950 text-sm leading-4 font-medium font-['Inter']"
+            (click)="changeRecordType('EXPENSE')"
+            [ngClass]="{ 'active-record-type': recordType === 'EXPENSE' }"
+            class="flex-1 px-4 py-[17.5px] flex items-center justify-center"
           >
-            EXPENSE
+            <span
+              class="block text-white text-sm leading-4 font-medium font-['Inter']"
+              >EXPENSE</span
+            >
           </div>
-        </div>
-        <div class="h-7 w-px border border-[#677693]"></div>
-        <div
-          class="text-slate-500 text-sm leading-4 font-medium font-['Inter']"
-        >
-          TRANSFER
+          <div
+            (click)="changeRecordType('TRANSFER')"
+            [ngClass]="{ 'active-record-type': recordType === 'TRANSFER' }"
+            class="flex-1 px-4 py-[17.5px] flex items-center justify-center"
+          >
+            <span
+              class="block text-white text-sm leading-4 font-medium font-['Inter']"
+              >TRANSFER</span
+            >
+          </div>
         </div>
       </div>
 
       <!-- date time -->
       <div
-        class="flex items-center justify-between max-w-[330px] mt-3 mb-3 mx-auto"
+        class="bg-[#4D5F82] shadow-[0px_2px_4px_0px_rgba(0,_0,_0,_0.25)] flex items-center justify-between pt-[3px] pb-[2px]"
       >
-        <div class="text-indigo-950 text-base font-medium font-['Inter']">
+        <div
+          (click)="openPicker('date')"
+          class="flex-1 text-white text-base text-center font-medium font-['Inter']"
+        >
           Oct 10, 2023
         </div>
-        <div class="h-7 w-px border border-[#677693]"></div>
-        <div class="text-indigo-950 text-base font-medium font-['Inter']">
+        <div class="h-7 w-px border border-white"></div>
+        <div
+          (click)="openPicker('time')"
+          class="flex-1 text-white text-base text-center font-medium font-['Inter']"
+        >
           10:10 AM
         </div>
       </div>
     </div>
 
-    <!-- selects -->
-    <div class="grid grid-cols-2 grid-rows-2 gap-x-2 gap-y-[6px]">
-      <!-- Account -->
-      <app-select
-        label="Account"
-        selectedValue="Card"
-        (openModal)="openAttachementModal()"
-      >
-        <div
-          class="w-8 h-8 bg-violet-100 rounded-md border border-gray-100 select-icon"
-        ></div>
-      </app-select>
+    <div class="px-2">
+      <!-- selects -->
+      <div class="grid grid-cols-2 grid-rows-2 gap-x-2 gap-y-[6px]">
+        <!-- Account -->
+        <app-select
+          label="Account"
+          selectedValue="Card"
+          (openModal)="openAttachementModal()"
+        >
+          <div
+            class="w-8 h-8 bg-violet-100 rounded-md border border-gray-100 select-icon"
+          ></div>
+        </app-select>
 
-      <!-- Category -->
-      <app-select
-        label="Category"
-        selectedValue="Clothing"
-        (openModal)="openAttachementModal()"
-      >
-        <div class="w-8 h-8 bg-fuchsia-500 rounded-full select-icon"></div>
-      </app-select>
+        <!-- Category -->
+        <app-select
+          label="Category"
+          selectedValue="Clothing"
+          (openModal)="openAttachementModal()"
+        >
+          <div class="w-8 h-8 bg-fuchsia-500 rounded-full select-icon"></div>
+        </app-select>
 
-      <!-- Payment Type -->
-      <app-select
-        label="Payment Type"
-        selectedValue="Cash"
-        (openModal)="openAttachementModal()"
-      >
-      </app-select>
+        <!-- Payment Type -->
+        <app-select
+          label="Payment Type"
+          selectedValue="Cash"
+          (openModal)="openAttachementModal()"
+        >
+        </app-select>
 
-      <!-- Attachements -->
-      <app-select
-        label="Attachements"
-        selectedValue="2 files"
-        (openModal)="openAttachementModal()"
-      >
-        <ion-icon name="attach-outline" size="medium"></ion-icon>
-      </app-select>
-    </div>
+        <!-- Attachements -->
+        <app-select
+          label="Attachements"
+          selectedValue="2 files"
+          (openModal)="openAttachementModal()"
+        >
+          <ion-icon name="attach-outline" size="medium"></ion-icon>
+        </app-select>
+      </div>
 
-    <!-- note -->
-    <div class="h-[90px] my-[10px] bg-white rounded-lg border border-gray-100">
-      <textarea
-        name=""
-        class="w-full h-full rounded-lg p-[10px] text-indigo-950 text-base font-medium font-['Inter'] outline-none"
+      <!-- note -->
+      <div
+        class="h-[90px] mt-[10px] bg-white rounded-lg border border-gray-100"
       >
+        <textarea
+          name=""
+          class="w-full h-full rounded-lg p-[10px] text-indigo-950 text-base font-medium font-['Inter'] outline-none"
+        >
    test test
-      </textarea>
+      </textarea
+        >
+      </div>
     </div>
 
-    <div>
+    <!-- calculator -->
+    <div class="px-2 flex-1">
       <app-calculator></app-calculator>
     </div>
   </div>

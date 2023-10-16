@@ -1,3 +1,8 @@
 textarea {
   resize: none;
 }
+
+.active-record-type {
+  @apply bg-[#4D5F82] shadow-[0px_4px_4px_0px_rgba(0,_0,_0,_0.25)_inset];
+  transition: background .1s ease-in-out;
+}

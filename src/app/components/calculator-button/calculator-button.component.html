@@ -1,10 +1,12 @@
 <div
-  class="h-[66px] py-[20px] rounded border flex items-center justify-center"
+  (click)="vibrate()"
+  class="relative ion-activatable overflow-hidden h-full min-h-[40px] rounded border flex items-center justify-center"
   [ngClass]="{
-    'bg-slate-500 border-slate-500': !isNum(value),
+    'bg-[#001A4D] border-[#001A4D]': !isNum(value),
     'bg-white border-gray-100': isNum(value)
   }"
 >
+  <ion-ripple-effect></ion-ripple-effect>
   <span
     class="text-white text-xl font-bold font-['Inter']"
     [ngClass]="{

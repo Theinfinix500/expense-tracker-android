@@ -1,3 +1,4 @@
+import { Haptics, ImpactStyle } from '@capacitor/haptics';
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, OnInit, Input, Output } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
@@ -16,4 +17,9 @@ export class SelectComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {}
+
+  async triggerSelectModal() {
+    await Haptics.impact({ style: ImpactStyle.Light });
+    this.openModal.emit();
+  }
 }
