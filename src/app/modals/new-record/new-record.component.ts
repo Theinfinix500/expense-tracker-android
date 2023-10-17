@@ -42,7 +42,7 @@ export class NewRecordComponent implements OnInit, OnDestroy {
   async openAttachementModal() {
     const modal = await this.modalCtrl.create({
       component: AttachementsComponent,
-      breakpoints: [0, 0.25, 0.5, 0.75],
+      breakpoints: [0, 0.75],
       initialBreakpoint: 0.75,
     });
     modal.present();
