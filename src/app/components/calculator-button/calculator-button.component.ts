@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
 import { Haptics, ImpactStyle } from '@capacitor/haptics';
 
@@ -12,6 +12,9 @@ import { Haptics, ImpactStyle } from '@capacitor/haptics';
 })
 export class CalculatorButtonComponent implements OnInit {
   @Input() value;
+  @Output() selectedNumber: EventEmitter<any> = new EventEmitter();
+  @Output() selectedOperator: EventEmitter<any> = new EventEmitter();
+  @Output() equalsOperator: EventEmitter<any> = new EventEmitter();
 
   constructor() {}
 
@@ -25,5 +28,16 @@ export class CalculatorButtonComponent implements OnInit {
 
   async vibrate() {
     await Haptics.impact({ style: ImpactStyle.Light });
+
+    if (this.value === '=') {
+      this.equalsOperator.emit(this.value);
+      return;
+    }
+
+    if (isNaN(this.value) && this.value !== '.') {
+      this.selectedOperator.emit(this.value);
+    } else {
+      this.selectedNumber.emit(this.value);
+    }
   }
 }

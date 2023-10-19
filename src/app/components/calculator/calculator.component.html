@@ -1,21 +1,41 @@
 <!-- calculator -->
 <div class="flex flex-col gap-2 h-full">
   <!-- Calculator pad -->
-  <div class="bg-white rounded-lg border border-gray-100 py-1 px-5">
-    <div class="flex items-center justify-between gap-3">
+  <div
+    class="relative h-[70px] bg-white rounded-lg border border-gray-100 py-1 px-5"
+  >
+    <div #calculatorPad class="h-full flex items-center justify-between gap-3">
       <span
-        class="flex-1 text-right text-sky-950 text-6xl font-normal font-['Inter']"
-        >225</span
+        *ngIf="operation"
+        class="absolute top-1 left-1 text-sky-950 text-lg font-semibold font-['Inter']"
+        >{{ operation }}</span
       >
-      <ion-icon name="backspace-outline" size="large"></ion-icon>
+      <div class="w-[calc(100%_-_44px)] text-right">
+        <span
+          #calculatorText="fitty"
+          appFitty
+          class="inline-block whitespace-nowrap text-right text-sky-950 text-6xl font-normal font-['Inter']"
+          >{{ currentOperandTextElement }}</span
+        >
+      </div>
+
+      <ion-icon
+        class="shrink-0"
+        name="backspace-outline"
+        size="large"
+        (click)="delete(calculatorText)"
+      ></ion-icon>
     </div>
   </div>
   <!-- Calculator digits -->
   <div class="flex-1">
     <div class="h-full grid grid-cols-4 grid-rows-4 gap-1">
       <app-calculator-button
-        *ngFor="let button of buttons"
-        [value]="button"
+        *ngFor="let buttonText of buttons"
+        [value]="buttonText"
+        (selectedNumber)="appendNumber(buttonText)"
+        (selectedOperator)="chooseOperation(buttonText)"
+        (equalsOperator)="compute()"
       ></app-calculator-button>
     </div>
   </div>
