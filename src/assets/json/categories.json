@@ -1,0 +1,370 @@
+{
+  "expenseCategories": [
+    {
+      "category": "Housing",
+      "icon": "🏡",
+      "subcategories": [
+        {
+          "subcategory": "Rent or Mortgage",
+          "icon": "🏠"
+        },
+        {
+          "subcategory": "Property Taxes",
+          "icon": "🏢"
+        },
+        {
+          "subcategory": "Home Insurance",
+          "icon": "🏠"
+        },
+        {
+          "subcategory": "Utilities",
+          "icon": "💡"
+        },
+        {
+          "subcategory": "Maintenance and Repairs",
+          "icon": "🧰"
+        },
+        {
+          "subcategory": "HOA Fees",
+          "icon": "🏘"
+        }
+      ]
+    },
+    {
+      "category": "Transportation",
+      "icon": "🚗",
+      "subcategories": [
+        {
+          "subcategory": "Car Payments",
+          "icon": "🚗"
+        },
+        {
+          "subcategory": "Gasoline/Fuel",
+          "icon": "⛽"
+        },
+        {
+          "subcategory": "Public Transportation",
+          "icon": "🚌"
+        },
+        {
+          "subcategory": "Auto Insurance",
+          "icon": "🚗"
+        },
+        {
+          "subcategory": "Maintenance and Repairs",
+          "icon": "🧰"
+        },
+        {
+          "subcategory": "Parking",
+          "icon": "🅿️"
+        }
+      ]
+    },
+    {
+      "category": "Groceries",
+      "icon": "🛒",
+      "subcategories": [
+        {
+          "subcategory": "Food and Beverages",
+          "icon": "🍽️"
+        },
+        {
+          "subcategory": "Household Supplies",
+          "icon": "🧺"
+        },
+        {
+          "subcategory": "Toiletries",
+          "icon": "🧴"
+        }
+      ]
+    },
+    {
+      "category": "Utilities",
+      "icon": "💡",
+      "subcategories": [
+        {
+          "subcategory": "Internet",
+          "icon": "🌐"
+        },
+        {
+          "subcategory": "Cable or Satellite TV",
+          "icon": "📺"
+        },
+        {
+          "subcategory": "Phone (Landline and Mobile)",
+          "icon": "📞"
+        },
+        {
+          "subcategory": "Streaming Services",
+          "icon": "📺"
+        }
+      ]
+    },
+    {
+      "category": "Healthcare",
+      "icon": "🏥",
+      "subcategories": [
+        {
+          "subcategory": "Health Insurance Premiums",
+          "icon": "💉"
+        },
+        {
+          "subcategory": "Doctor's Visits",
+          "icon": "👩‍⚕️"
+        },
+        {
+          "subcategory": "Prescriptions",
+          "icon": "💊"
+        },
+        {
+          "subcategory": "Dental Care",
+          "icon": "😁"
+        },
+        {
+          "subcategory": "Vision Care",
+          "icon": "👓"
+        }
+      ]
+    },
+    {
+      "category": "Education",
+      "icon": "🎓",
+      "subcategories": [
+        {
+          "subcategory": "Tuition",
+          "icon": "📚"
+        },
+        {
+          "subcategory": "Books and Supplies",
+          "icon": "📖"
+        },
+        {
+          "subcategory": "Student Loans",
+          "icon": "🎓"
+        },
+        {
+          "subcategory": "Educational Tools or Software",
+          "icon": "🖥️"
+        }
+      ]
+    },
+    {
+      "category": "Entertainment",
+      "icon": "🎬",
+      "subcategories": [
+        {
+          "subcategory": "Dining Out",
+          "icon": "🍔"
+        },
+        {
+          "subcategory": "Movies and Entertainment",
+          "icon": "🍿"
+        },
+        {
+          "subcategory": "Hobbies and Activities",
+          "icon": "🎨"
+        },
+        {
+          "subcategory": "Events and Tickets",
+          "icon": "🎫"
+        }
+      ]
+    },
+    {
+      "category": "Savings and Investments",
+      "icon": "💰",
+      "subcategories": [
+        {
+          "subcategory": "Retirement Savings",
+          "icon": "🏦"
+        },
+        {
+          "subcategory": "Investment Contributions",
+          "icon": "📈"
+        },
+        {
+          "subcategory": "Emergency Fund",
+          "icon": "🚨"
+        },
+        {
+          "subcategory": "Savings Goals",
+          "icon": "🎯"
+        }
+      ]
+    },
+    {
+      "category": "Debts",
+      "icon": "💳",
+      "subcategories": [
+        {
+          "subcategory": "Credit Card Payments",
+          "icon": "💳"
+        },
+        {
+          "subcategory": "Personal Loans",
+          "icon": "💰"
+        },
+        {
+          "subcategory": "Student Loans",
+          "icon": "🎓"
+        },
+        {
+          "subcategory": "Other Debts",
+          "icon": "💸"
+        }
+      ]
+    },
+    {
+      "category": "Personal Care",
+      "icon": "💇",
+      "subcategories": [
+        {
+          "subcategory": "Haircuts and Styling",
+          "icon": "💇"
+        },
+        {
+          "subcategory": "Cosmetics and Personal Products",
+          "icon": "💄"
+        }
+      ]
+    },
+    {
+      "category": "Travel",
+      "icon": "✈️",
+      "subcategories": [
+        {
+          "subcategory": "Flights",
+          "icon": "✈️"
+        },
+        {
+          "subcategory": "Hotels",
+          "icon": "🏨"
+        },
+        {
+          "subcategory": "Car Rentals",
+          "icon": "🚗"
+        },
+        {
+          "subcategory": "Vacation Expenses",
+          "icon": "🌴"
+        }
+      ]
+    },
+    {
+      "category": "Gifts and Donations",
+      "icon": "🎁",
+      "subcategories": [
+        {
+          "subcategory": "Gifts for Family and Friends",
+          "icon": "🎁"
+        },
+        {
+          "subcategory": "Charitable Donations",
+          "icon": "🏥"
+        }
+      ]
+    },
+    {
+      "category": "Insurance",
+      "icon": "🏥",
+      "subcategories": [
+        {
+          "subcategory": "Life Insurance Premiums",
+          "icon": "💉"
+        },
+        {
+          "subcategory": "Other Insurance Policies",
+          "icon": "🏢"
+        }
+      ]
+    },
+    {
+      "category": "Taxes",
+      "icon": "💸",
+      "subcategories": [
+        {
+          "subcategory": "Income Taxes",
+          "icon": "💰"
+        },
+        {
+          "subcategory": "Property Taxes",
+          "icon": "🏢"
+        },
+        {
+          "subcategory": "Sales Taxes",
+          "icon": "💰"
+        }
+      ]
+    },
+    {
+      "category": "Home and Office",
+      "icon": "🏢",
+      "subcategories": [
+        {
+          "subcategory": "Furniture and Home Decor",
+          "icon": "🪑"
+        },
+        {
+          "subcategory": "Office Supplies",
+          "icon": "📎"
+        }
+      ]
+    },
+    {
+      "category": "Childcare and Education",
+      "icon": "🎒",
+      "subcategories": [
+        {
+          "subcategory": "Daycare",
+          "icon": "🏫"
+        },
+        {
+          "subcategory": "School Expenses",
+          "icon": "📚"
+        }
+      ]
+    },
+    {
+      "category": "Pet Care",
+      "icon": "🐾",
+      "subcategories": [
+        {
+          "subcategory": "Pet Food",
+          "icon": "🦴"
+        },
+        {
+          "subcategory": "Veterinary Care",
+          "icon": "🏥"
+        },
+        {
+          "subcategory": "Pet Supplies",
+          "icon": "🐕"
+        }
+      ]
+    },
+    {
+      "category": "Legal and Professional Fees",
+      "icon": "📝",
+      "subcategories": [
+        {
+          "subcategory": "Attorney Fees",
+          "icon": "⚖️"
+        },
+        {
+          "subcategory": "Accounting Fees",
+          "icon": "📊"
+        }
+      ]
+    },
+    {
+      "category": "Miscellaneous",
+      "icon": "📎",
+      "subcategories": [
+        {
+          "subcategory": "Other Expenses",
+          "icon": "💼"
+        }
+      ]
+    }
+  ]
+}

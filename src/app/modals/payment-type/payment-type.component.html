@@ -1,0 +1,33 @@
+<ion-header class="shadow-none">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button (click)="dismiss()">
+        <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>
+      <span class="text-lg font-bold font-['Inter']"
+        >Select a payment type</span
+      >
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="h-full pt-[22px]">
+    <!-- Payment types -->
+    <div class="flex flex-col gap-5 px-[22px]">
+      <div
+        *ngFor="let payment of paymentTypes"
+        class="h-12 flex items-center justify-between gap-4"
+        (click)="closeModal(payment)"
+      >
+        <div
+          class="w-12 h-12 bg-sky-100 rounded-lg border border-slate-400"
+        ></div>
+        <div class="flex-1 text-sky-950 text-base font-semibold font-['Inter']">
+          {{ payment.label }}
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

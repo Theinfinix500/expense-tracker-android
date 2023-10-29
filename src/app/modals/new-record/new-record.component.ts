@@ -9,6 +9,13 @@ import {
   DatePicker,
   DatePickerOptions,
 } from '@capacitor-community/date-picker';
+import { Account, AccountsComponent } from '../accounts/accounts.component';
+import { Device } from '@capacitor/device';
+import { CategoriesComponent } from '../categories/categories.component';
+import {
+  PaymentType,
+  PaymentTypeComponent,
+} from '../payment-type/payment-type.component';
 
 enum RecordType {
   INCOME = 'INCOME',
@@ -24,19 +31,33 @@ enum RecordType {
 })
 export class NewRecordComponent implements OnInit, OnDestroy {
   recordType: RecordType = RecordType.EXPENSE;
+  paymentType: PaymentType = { label: 'Cash', value: 'cash' };
+  selectedAccount: Account = {
+    label: 'CIH',
+    value: 'cih',
+    type: 'Cash',
+    backgroundColor: 'bg-sky-500',
+  };
+  selectedCategory;
 
   constructor(private modalCtrl: ModalController) {}
 
   async ngOnInit() {
+    const { platform } = await Device.getInfo();
+    if (platform === 'web') return;
     await StatusBar.setBackgroundColor({ color: '#001A4D' });
     await StatusBar.setStyle({ style: Style.Dark });
-    const statusBarInfos = await StatusBar.getInfo();
-    console.log(statusBarInfos);
   }
 
   async ngOnDestroy() {
+    const { platform } = await Device.getInfo();
+    if (platform === 'web') return;
     await StatusBar.setBackgroundColor({ color: '#FFFFFF' });
     await StatusBar.setStyle({ style: Style.Light });
+  }
+
+  closeModal() {
+    this.modalCtrl.dismiss();
   }
 
   async openAttachementModal() {
@@ -51,6 +72,48 @@ export class NewRecordComponent implements OnInit, OnDestroy {
 
     if (role === 'confirm') {
       console.log(`Hello, ${data}!`);
+    }
+  }
+
+  async openAccountsModal() {
+    const modal = await this.modalCtrl.create({
+      component: AccountsComponent,
+    });
+    modal.present();
+
+    const { data } = await modal.onWillDismiss();
+
+    if (data) {
+      this.selectedAccount = data;
+    }
+  }
+
+  async openCategoryModal() {
+    const modal = await this.modalCtrl.create({
+      component: CategoriesComponent,
+      // breakpoints: [0, 0.75],
+      // initialBreakpoint: 0.75,
+    });
+    modal.present();
+
+    const { data, role } = await modal.onWillDismiss();
+
+    if (role === 'confirm') {
+      console.log(`Hello, ${data}!`);
+    }
+  }
+  async openPaymentTypeModal() {
+    const modal = await this.modalCtrl.create({
+      component: PaymentTypeComponent,
+      // breakpoints: [0, 0.75],
+      // initialBreakpoint: 0.75,
+    });
+    modal.present();
+
+    const { data } = await modal.onWillDismiss();
+
+    if (data) {
+      this.paymentType = data;
     }
   }
 

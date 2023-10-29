@@ -13,6 +13,7 @@
               ></ion-icon>
             </div>
             <div
+              (click)="closeModal()"
               class="text-white text-sm leading-4 font-medium font-['Inter']"
             >
               CANCEL
@@ -95,11 +96,12 @@
         <!-- Account -->
         <app-select
           label="Account"
-          selectedValue="Card"
-          (openModal)="openAttachementModal()"
+          [selectedValue]="selectedAccount.label"
+          (openModal)="openAccountsModal()"
         >
           <div
-            class="w-8 h-8 bg-violet-100 rounded-md border border-gray-100 select-icon"
+            class="w-8 h-8 rounded-md border select-icon"
+            [ngClass]="selectedAccount.backgroundColor"
           ></div>
         </app-select>
 
@@ -107,16 +109,19 @@
         <app-select
           label="Category"
           selectedValue="Clothing"
-          (openModal)="openAttachementModal()"
+          (openModal)="openCategoryModal()"
         >
-          <div class="w-8 h-8 bg-fuchsia-500 rounded-full select-icon"></div>
+          <div
+            class="w-8 h-8 rounded-full select-icon"
+            [ngClass]="selectedCategory?.backgroundColor"
+          ></div>
         </app-select>
 
         <!-- Payment Type -->
         <app-select
           label="Payment Type"
-          selectedValue="Cash"
-          (openModal)="openAttachementModal()"
+          [selectedValue]="paymentType?.label"
+          (openModal)="openPaymentTypeModal()"
         >
         </app-select>
 
