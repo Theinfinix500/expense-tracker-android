@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
 import { ExploreContainerComponent } from '../explore-container/explore-container.component';
 import { HeaderComponent } from '../components/header/header.component';
@@ -18,7 +18,10 @@ import { TransactionCardComponent } from '../components/transaction-card/transac
     TransactionCardComponent,
   ],
 })
-export class Tab1Page {
+export class Tab1Page implements OnInit {
   currentDate: Date = new Date();
+
   constructor() {}
+
+  async ngOnInit() {}
 }
