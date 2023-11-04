@@ -1,3 +1,5 @@
+import { RecordsService } from './../../services/records.service';
+import { SupabaseService } from './../../services/supabase.service';
 import { StatusBar, Style } from '@capacitor/status-bar';
 import { CommonModule } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
@@ -16,16 +18,19 @@ import {
   PaymentType,
   PaymentTypeComponent,
 } from '../payment-type/payment-type.component';
+import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { RecordType, Record } from '@models/index';
 
-enum RecordType {
-  INCOME = 'INCOME',
-  EXPENSE = 'EXPENSE',
-  TRANSFER = 'TRANSFER',
-}
 @Component({
   selector: 'app-new-record',
   standalone: true,
-  imports: [CommonModule, IonicModule, SelectComponent, CalculatorComponent],
+  imports: [
+    CommonModule,
+    IonicModule,
+    SelectComponent,
+    CalculatorComponent,
+    ReactiveFormsModule,
+  ],
   templateUrl: './new-record.component.html',
   styleUrls: ['./new-record.component.scss'],
 })
@@ -40,9 +45,25 @@ export class NewRecordComponent implements OnInit, OnDestroy {
   };
   selectedCategory;
 
-  constructor(private modalCtrl: ModalController) {}
+  recordForm: FormGroup;
+
+  constructor(
+    private modalCtrl: ModalController,
+    private fb: FormBuilder,
+    private recordsService: RecordsService
+  ) {}
 
   async ngOnInit() {
+    this.recordForm = this.fb.group({
+      account: null,
+      category: null,
+      paymentType: 'cash',
+      recordType: RecordType.EXPENSE,
+      price: 120,
+      note: 'this is a simple note',
+      recordDate: new Date(),
+    });
+
     const { platform } = await Device.getInfo();
     if (platform === 'web') return;
     await StatusBar.setBackgroundColor({ color: '#001A4D' });
@@ -91,8 +112,6 @@ export class NewRecordComponent implements OnInit, OnDestroy {
   async openCategoryModal() {
     const modal = await this.modalCtrl.create({
       component: CategoriesComponent,
-      // breakpoints: [0, 0.75],
-      // initialBreakpoint: 0.75,
     });
     modal.present();
 
@@ -105,8 +124,6 @@ export class NewRecordComponent implements OnInit, OnDestroy {
   async openPaymentTypeModal() {
     const modal = await this.modalCtrl.create({
       component: PaymentTypeComponent,
-      // breakpoints: [0, 0.75],
-      // initialBreakpoint: 0.75,
     });
     modal.present();
 
@@ -135,5 +152,10 @@ export class NewRecordComponent implements OnInit, OnDestroy {
       },
     };
     DatePicker.present(options);
+  }
+
+  async saveRecord() {
+    const recordData = this.recordForm.getRawValue() as Record;
+    await this.recordsService.addRecord(recordData);
   }
 }

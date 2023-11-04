@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
-import { SupabaseService } from 'src/app/services/supabase.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -10,22 +10,14 @@ import { SupabaseService } from 'src/app/services/supabase.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
   constructor(
-    private readonly supabase: SupabaseService,
+    private readonly authService: AuthService,
     private readonly formBuilder: FormBuilder
   ) {}
 
-  async ngOnInit() {
-    // const signedIn = await this.logIn();
-    // if (signedIn) {
-    const { data: records } = await this.supabase.getRecords();
-    console.log(records);
-    // }
-  }
-
   logIn() {
-    return this.supabase.signIn('jbaraali18@gmail.com');
+    return this.authService.signIn('jbaraali18@gmail.com');
   }
 
   loading = false;
@@ -38,7 +30,7 @@ export class LoginComponent implements OnInit {
     try {
       this.loading = true;
       const email = this.signInForm.value.email as string;
-      const { error } = await this.supabase.signIn(email);
+      const { error } = await this.authService.signIn(email);
       if (error) throw error;
       alert('Check your email for the login link!');
     } catch (error) {

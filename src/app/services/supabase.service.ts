@@ -8,30 +8,58 @@ import {
   SupabaseClient,
   User,
 } from '@supabase/supabase-js';
-
-export interface Profile {
-  id?: string;
-  username: string;
-  website: string;
-  avatar_url: string;
-}
+import { BehaviorSubject } from 'rxjs';
+import { Profile } from '../models/profile.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class SupabaseService {
-  private supabase: SupabaseClient;
+  supabase: SupabaseClient;
+  private _connectedUser: BehaviorSubject<User | null> = new BehaviorSubject(
+    null
+  );
   _session: AuthSession | null = null;
+  connectedUser = this._connectedUser.asObservable();
 
   constructor() {
     this.supabase = createClient(
       environment.supabaseUrl,
       environment.supabaseKey
     );
+
+    this.supabase.auth.onAuthStateChange((event, session) => {
+      console.log('AUTH STATE CALLED');
+      console.log('SESSION::', session);
+      console.log('SESSION EVENT::', event);
+
+      if (event === 'SIGNED_IN' || event === 'TOKEN_REFRESHED') {
+        // we have a connected user so add it to subject
+        this._connectedUser.next(session.user);
+      }
+
+      if (event === 'SIGNED_OUT') {
+        this._connectedUser.next(null);
+      }
+    });
+  }
+
+  async userSession() {
+    const {
+      data: { session },
+    } = await this.supabase.auth.getSession();
+
+    if (!session) return null;
+
+    const { user } = session;
+
+    return user;
   }
 
   get session() {
     this.supabase.auth.getSession().then(({ data }) => {
+      console.log('GET SESSION()::', data.session);
+
       this._session = data.session;
     });
     return this._session;
@@ -51,17 +79,6 @@ export class SupabaseService {
     return this.supabase.auth.onAuthStateChange(callback);
   }
 
-  signIn(email: string) {
-    return this.supabase.auth.signInWithOtp({
-      email,
-      options: { emailRedirectTo: 'http://localhost:8100/tabs1', },
-    });
-  }
-
-  signOut() {
-    return this.supabase.auth.signOut();
-  }
-
   updateProfile(profile: Profile) {
     const update = {
       ...profile,
@@ -77,17 +94,5 @@ export class SupabaseService {
 
   uploadAvatar(filePath: string, file: File) {
     return this.supabase.storage.from('avatars').upload(filePath, file);
-  }
-
-  getRecords() {
-    return this.supabase.from('records').select('*');
-  }
-
-  getRecord(recordId: number) {
-    return this.supabase
-      .from('records')
-      .select('*')
-      .eq('id', recordId)
-      .single();
   }
 }

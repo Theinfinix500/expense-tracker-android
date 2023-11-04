@@ -22,6 +22,9 @@
     "useDefineForClassFields": false,
     "ignoreDeprecations": "5.0",
     "suppressImplicitAnyIndexErrors": true,
+    "paths": {
+      "@models/*": ["src/app/models/*"]
+    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

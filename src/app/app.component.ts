@@ -20,10 +20,10 @@ export class AppComponent {
   constructor(private supabaseService: SupabaseService) {}
 
   async ngOnInit() {
-    this.supabaseService.authChanges((_, session) => {
-      this.session = session;
-      console.log(session);
-    });
+    // this.supabaseService.authChanges((_, session) => {
+    //   this.session = session;
+    //   console.log(session);
+    // });
 
     const { platform } = await Device.getInfo();
     if (platform === 'web') return;
