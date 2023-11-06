@@ -1,9 +1,8 @@
 import { RecordsService } from './../../services/records.service';
-import { SupabaseService } from './../../services/supabase.service';
 import { StatusBar, Style } from '@capacitor/status-bar';
 import { CommonModule } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { IonicModule, ModalController } from '@ionic/angular';
+import { AlertController, IonicModule, ModalController } from '@ionic/angular';
 import { AttachementsComponent } from '../attachements/attachements.component';
 import { SelectComponent } from 'src/app/components/select/select.component';
 import { CalculatorComponent } from 'src/app/components/calculator/calculator.component';
@@ -44,20 +43,24 @@ export class NewRecordComponent implements OnInit, OnDestroy {
     backgroundColor: 'bg-sky-500',
   };
   selectedCategory;
-
   recordForm: FormGroup;
 
   constructor(
     private modalCtrl: ModalController,
     private fb: FormBuilder,
-    private recordsService: RecordsService
+    private recordsService: RecordsService,
+    private alertController: AlertController
   ) {}
+
+  get recordDate() {
+    return this.recordForm.get('recordDate').value;
+  }
 
   async ngOnInit() {
     this.recordForm = this.fb.group({
-      account: null,
-      category: null,
-      paymentType: 'cash',
+      account: 4,
+      category: 1,
+      paymentType: 'Cash',
       recordType: RecordType.EXPENSE,
       price: 120,
       note: 'this is a simple note',
@@ -82,12 +85,8 @@ export class NewRecordComponent implements OnInit, OnDestroy {
   }
 
   async openAttachementModal() {
-    const modal = await this.modalCtrl.create({
-      component: AttachementsComponent,
-      breakpoints: [0, 0.75],
-      initialBreakpoint: 0.75,
-    });
-    modal.present();
+    const options = { breakpoints: [0, 0.75], initialBreakpoint: 0.75 };
+    const modal = await this.openModal(AttachementsComponent, options);
 
     const { data, role } = await modal.onWillDismiss();
 
@@ -97,11 +96,7 @@ export class NewRecordComponent implements OnInit, OnDestroy {
   }
 
   async openAccountsModal() {
-    const modal = await this.modalCtrl.create({
-      component: AccountsComponent,
-    });
-    modal.present();
-
+    const modal = await this.openModal(AccountsComponent);
     const { data } = await modal.onWillDismiss();
 
     if (data) {
@@ -110,35 +105,44 @@ export class NewRecordComponent implements OnInit, OnDestroy {
   }
 
   async openCategoryModal() {
-    const modal = await this.modalCtrl.create({
-      component: CategoriesComponent,
-    });
-    modal.present();
+    const modal = await this.openModal(CategoriesComponent);
+    const { data: category } = await modal.onWillDismiss();
 
-    const { data, role } = await modal.onWillDismiss();
-
-    if (role === 'confirm') {
-      console.log(`Hello, ${data}!`);
+    if (category) {
+      this.recordForm.patchValue({ category });
     }
   }
-  async openPaymentTypeModal() {
+
+  async openModal(component: any, options?) {
     const modal = await this.modalCtrl.create({
-      component: PaymentTypeComponent,
+      ...options,
+      component,
     });
+
     modal.present();
+
+    return modal;
+  }
+
+  async openPaymentTypeModal() {
+    const modal = await this.openModal(PaymentTypeComponent);
 
     const { data } = await modal.onWillDismiss();
 
     if (data) {
       this.paymentType = data;
+      this.recordForm.patchValue({
+        paymentType: data.value,
+      });
     }
   }
 
   changeRecordType(type: string) {
     this.recordType = type as RecordType;
+    this.recordForm.patchValue({ recordType: type });
   }
 
-  openPicker(mode: 'date' | 'time') {
+  async openPicker(mode: 'date' | 'time') {
     const options: DatePickerOptions = {
       mode,
       locale: 'en_US',
@@ -151,11 +155,74 @@ export class NewRecordComponent implements OnInit, OnDestroy {
         format: 'dd/MM/yyyy',
       },
     };
-    DatePicker.present(options);
+
+    const { value } = await DatePicker.present(options);
+    if (!value) return;
+
+    const oldTime = this.recordDate as Date;
+    let selectedDate = new Date();
+    let selectedTime = new Date();
+    let recordDate = new Date();
+
+    if (mode === 'date') {
+      selectedDate = new Date(value);
+      selectedDate.setHours(oldTime.getHours(), oldTime.getMinutes());
+      recordDate = new Date(selectedDate);
+    } else {
+      const selectedValue = new Date(value);
+      selectedTime = new Date(oldTime);
+      selectedTime.setHours(
+        selectedValue.getHours(),
+        selectedValue.getMinutes()
+      );
+      recordDate = new Date(selectedTime);
+    }
+
+    this.recordForm.patchValue({
+      recordDate,
+    });
   }
 
   async saveRecord() {
     const recordData = this.recordForm.getRawValue() as Record;
     await this.recordsService.addRecord(recordData);
+    await this.presentAlert();
+  }
+
+  setPrice(price) {
+    this.recordForm.patchValue({ price });
+  }
+
+  async presentAlert() {
+    const alert = await this.alertController.create({
+      header: 'Alert',
+      subHeader: 'Record added successfully',
+      message: 'Do you want to add another record?',
+      buttons: [
+        {
+          text: 'No',
+          role: 'cancel',
+          handler: () => {
+            this.closeModal();
+          },
+        },
+        {
+          text: 'Yes',
+          role: 'confirm',
+          handler: () => {
+            this.resetForm();
+          },
+        },
+      ],
+    });
+
+    await alert.present();
+  }
+
+  resetForm() {
+    this.recordForm.patchValue({
+      note: '',
+      price: 0,
+    });
   }
 }

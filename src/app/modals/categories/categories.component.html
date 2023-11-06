@@ -72,14 +72,18 @@
     </div>
   </div>
   <div class="w-[360px] h-[462px]">
-    <div
-      class="bg-white border-b border-neutral-300 flex items-center gap-4 px-4 py-[13px]"
-    >
-      <div class="w-10 h-10 bg-zinc-300 rounded-full"></div>
-      <div class="text-black text-base font-semibold font-['Inter']">
-        Food & Drinks
+    <ng-container *ngFor="let category of categories">
+      <div
+        *ngIf="category.category_parent === null"
+        class="bg-white border-b border-neutral-300 flex items-center gap-4 px-4 py-[13px]"
+      >
+        <div class="w-10 h-10 bg-zinc-300 rounded-full"></div>
+        <div class="text-black text-base font-semibold font-['Inter']">
+          {{ category?.category_name }}
+        </div>
       </div>
-    </div>
+    </ng-container>
+
     <div
       class="bg-white border-b border-neutral-300 flex items-center gap-4 px-4 py-[13px]"
     >

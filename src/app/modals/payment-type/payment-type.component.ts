@@ -16,13 +16,13 @@ export interface PaymentType {
 })
 export class PaymentTypeComponent implements OnInit {
   paymentTypes: PaymentType[] = [
-    { label: 'Cash', value: 'cash' },
-    { label: 'Debit card', value: 'debitCard' },
-    { label: 'Credit card', value: 'creditCard' },
-    { label: 'Bank transfer', value: 'bankTransfer' },
-    { label: 'Voucher', value: 'voucher' },
-    { label: 'Mobile payment', value: 'mobilePayment' },
-    { label: 'Web payment', value: 'webPayment' },
+    { label: 'Cash', value: 'Cash' },
+    { label: 'Debit card', value: 'Debit_card' },
+    { label: 'Credit card', value: 'Credit_card' },
+    { label: 'Bank transfer', value: 'Bank_transfer' },
+    { label: 'Voucher', value: 'Voucher' },
+    { label: 'Mobile payment', value: 'Mobile_payment' },
+    { label: 'Web payment', value: 'Web_payment' },
   ];
   constructor(private modalCtrl: ModalController) {}
 

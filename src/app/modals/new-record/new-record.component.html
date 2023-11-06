@@ -1,10 +1,13 @@
 <ion-content>
-  <div class="flex flex-col gap-2 h-full pb-2">
+  <div class="flex flex-col gap-2 h-full pb-2" [formGroup]="recordForm">
     <div>
       <div class="bg-[#001A4D]">
         <!-- save or cancel record -->
         <div class="flex items-center justify-between px-[26px] py-[13.5px]">
-          <div class="flex items-center justify-between gap-[2px]">
+          <button
+            (click)="closeModal()"
+            class="flex items-center justify-between gap-[2px]"
+          >
             <div class="flex-col justify-start items-start inline-flex">
               <ion-icon
                 name="close-outline"
@@ -13,13 +16,15 @@
               ></ion-icon>
             </div>
             <div
-              (click)="closeModal()"
               class="text-white text-sm leading-4 font-medium font-['Inter']"
             >
               CANCEL
             </div>
-          </div>
-          <div class="flex items-center justify-between gap-[2px]">
+          </button>
+          <button
+            (click)="saveRecord()"
+            class="flex items-center justify-between gap-[2px]"
+          >
             <div class="w-6 h-6 flex-col justify-start items-start inline-flex">
               <ion-icon
                 name="checkmark-outline"
@@ -27,13 +32,12 @@
                 class="w-6 h-6 text-white"
               ></ion-icon>
             </div>
-            <div
-              (click)="saveRecord()"
+            <span
               class="text-white text-sm leading-4 font-medium font-['Inter']"
             >
               SAVE
-            </div>
-          </div>
+            </span>
+          </button>
         </div>
 
         <!-- record type -->
@@ -79,14 +83,14 @@
           (click)="openPicker('date')"
           class="flex-1 text-white text-base text-center font-medium font-['Inter']"
         >
-          Oct 10, 2023
+          {{ recordDate | date : "mediumDate" }}
         </div>
         <div class="h-7 w-px border border-white"></div>
         <div
           (click)="openPicker('time')"
           class="flex-1 text-white text-base text-center font-medium font-['Inter']"
         >
-          10:10 AM
+          {{ recordDate | date : "shortTime" }}
         </div>
       </div>
     </div>
@@ -140,19 +144,17 @@
       <div
         class="h-[90px] mt-[10px] bg-white rounded-lg border border-gray-100"
       >
-        <textarea
-          name=""
+        <ion-textarea
+          formControlName="note"
           class="w-full h-full rounded-lg p-[10px] text-indigo-950 text-base font-medium font-['Inter'] outline-none"
         >
-   test test
-      </textarea
-        >
+        </ion-textarea>
       </div>
     </div>
 
     <!-- calculator -->
     <div class="px-2 flex-1">
-      <app-calculator></app-calculator>
+      <app-calculator formControlName="price"></app-calculator>
     </div>
   </div>
 </ion-content>

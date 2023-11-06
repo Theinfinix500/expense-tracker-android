@@ -1,3 +1,4 @@
+import { CategoriesService } from './../../services/categories.service';
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { IonicModule, ModalController } from '@ionic/angular';
@@ -10,11 +11,18 @@ import { IonicModule, ModalController } from '@ionic/angular';
   styleUrls: ['./categories.component.scss'],
 })
 export class CategoriesComponent implements OnInit {
-  constructor(private modalCtrl: ModalController) {}
+  categories: any[] = [];
 
-  ngOnInit() {}
+  constructor(
+    private modalCtrl: ModalController,
+    private categoriesService: CategoriesService
+  ) {}
+
+  async ngOnInit() {
+    this.categories = (await this.categoriesService.getCategories()).data;
+  }
 
   closeModal() {
-    this.modalCtrl.dismiss();
+    this.modalCtrl.dismiss(1);
   }
 }

@@ -1,4 +1,4 @@
-import { RecordType } from "./record-type.model";
+import { RecordType } from "./record-type.enum";
 
 export interface Record {
   account?: string;

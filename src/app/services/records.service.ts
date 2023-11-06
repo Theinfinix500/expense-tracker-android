@@ -30,8 +30,8 @@ export class RecordsService {
     } = await this.supabase.supabase.auth.getSession();
 
     const {
-      account,
-      category,
+      account: record_account,
+      category: record_category,
       recordType: record_type,
       recordDate: record_date,
       paymentType: payment_type,
@@ -46,6 +46,8 @@ export class RecordsService {
         record_date,
         payment_type,
         record_user,
+        record_account,
+        record_category,
       })
       .select()
       .single();

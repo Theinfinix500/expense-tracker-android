@@ -1,9 +1,16 @@
 import { CommonModule } from '@angular/common';
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  OnInit,
+  ViewChild,
+  forwardRef,
+} from '@angular/core';
 import { IonicModule } from '@ionic/angular';
 import { CalculatorButtonComponent } from '../calculator-button/calculator-button.component';
 import { FittyDirective } from 'src/app/directives/fitty.directive';
 import Big from 'big.js';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: 'app-calculator',
@@ -14,10 +21,17 @@ import Big from 'big.js';
     CalculatorButtonComponent,
     FittyDirective,
   ],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => CalculatorComponent),
+      multi: true,
+    },
+  ],
   templateUrl: './calculator.component.html',
   styleUrls: ['./calculator.component.scss'],
 })
-export class CalculatorComponent implements OnInit {
+export class CalculatorComponent implements OnInit, ControlValueAccessor {
   @ViewChild('calculatorPad') calculatorPad: ElementRef;
   @ViewChild('calculatorText') calculatorText: ElementRef;
 
@@ -28,7 +42,22 @@ export class CalculatorComponent implements OnInit {
   currentOperandTextElement = '0';
   previousOperandTextElement;
 
+  numberChangedFn: Function;
+
   constructor() {}
+
+  writeValue(obj: any): void {
+    console.log(obj);
+    this.currentOperandTextElement = obj;
+  }
+
+  registerOnChange(fn: any): void {
+    this.numberChangedFn = fn;
+  }
+
+  registerOnTouched(fn: any): void {}
+
+  setDisabledState?(isDisabled: boolean): void {}
 
   ngOnInit() {}
 
@@ -114,6 +143,7 @@ export class CalculatorComponent implements OnInit {
 
   updateDisplay() {
     this.currentOperandTextElement = this.getDisplayNumber(this.currentOperand);
+    this.numberChangedFn(+this.currentOperandTextElement);
 
     if (this.operation != null) {
       this.previousOperandTextElement = `${this.getDisplayNumber(
