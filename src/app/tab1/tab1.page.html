@@ -87,36 +87,10 @@
     <!-- Expense Cards -->
     <div class="mt-3 flex flex-col gap-4">
       <app-transaction-card
-        category="shopping"
-        recordNote="Some grocery"
+        *ngFor="let record of latestRecords"
+        [record]="record"
         icon="cart"
-        [price]="320"
-        [time]="currentDate"
         categoryColor="orange"
-      ></app-transaction-card>
-      <app-transaction-card
-        category="Subscription"
-        recordNote="Netflix"
-        icon="videocam"
-        [price]="-10"
-        [time]="currentDate"
-        categoryColor="indigo"
-      ></app-transaction-card>
-      <app-transaction-card
-        category="Subscription"
-        recordNote="Netflix"
-        icon="videocam"
-        [price]="-10"
-        [time]="currentDate"
-        categoryColor="indigo"
-      ></app-transaction-card>
-      <app-transaction-card
-        category="Subscription"
-        recordNote="Netflix"
-        icon="videocam"
-        [price]="-10"
-        [time]="currentDate"
-        categoryColor="indigo"
       ></app-transaction-card>
     </div>
   </div>

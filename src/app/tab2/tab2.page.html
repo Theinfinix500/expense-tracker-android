@@ -1,7 +1,10 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="#" class="text-neutral-900"></ion-back-button>
+      <ion-back-button
+        defaultHref="#"
+        class="text-neutral-900"
+      ></ion-back-button>
     </ion-buttons>
     <ion-title
       class="text-neutral-900 text-base font-bold font-['Inter'] tracking-wide"
@@ -72,28 +75,8 @@
     <!-- Expense Cards -->
     <div class="mt-4 flex flex-col gap-4">
       <app-transaction-card
-        category="Food"
-        recordNote="Buy a ramen"
         icon="restaurant"
-        [price]="-30"
-        [time]="currentDate"
         categoryColor="rose"
-      ></app-transaction-card>
-      <app-transaction-card
-        category="shopping"
-        recordNote="Some grocery"
-        icon="cart"
-        [price]="320"
-        [time]="currentDate"
-        categoryColor="orange"
-      ></app-transaction-card>
-      <app-transaction-card
-        category="Subscription"
-        recordNote="Netflix"
-        icon="videocam"
-        [price]="-10"
-        [time]="currentDate"
-        categoryColor="indigo"
       ></app-transaction-card>
     </div>
   </div>
@@ -110,28 +93,8 @@
     <!-- Expense Cards -->
     <div class="mt-4 flex flex-col gap-4">
       <app-transaction-card
-        category="Food"
-        recordNote="Buy a ramen"
         icon="restaurant"
-        [price]="-30"
-        [time]="currentDate"
         categoryColor="rose"
-      ></app-transaction-card>
-      <app-transaction-card
-        category="shopping"
-        recordNote="Some grocery"
-        icon="cart"
-        [price]="320"
-        [time]="currentDate"
-        categoryColor="orange"
-      ></app-transaction-card>
-      <app-transaction-card
-        category="Subscription"
-        recordNote="Netflix"
-        icon="videocam"
-        [price]="-10"
-        [time]="currentDate"
-        categoryColor="indigo"
       ></app-transaction-card>
     </div>
   </div>

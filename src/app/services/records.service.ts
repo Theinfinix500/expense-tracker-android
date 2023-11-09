@@ -20,6 +20,20 @@ export class RecordsService {
       .single();
   }
 
+  getLatestRecords() {
+    return this.supabase.supabase
+      .from('records')
+      .select(
+        `*,
+        paymentType:payment_type,
+        recordDate:record_date,
+        recordType:record_type
+      , category:categories(*), account:accounts(*)`
+      )
+      .order('record_date')
+      .limit(5);
+  }
+
   async addRecord(record: Record) {
     const {
       data: {

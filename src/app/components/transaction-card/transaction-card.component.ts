@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit, Input } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
+import { Record } from '@models/record.model';
 
 @Component({
   selector: 'app-transaction-card',
@@ -10,11 +11,8 @@ import { IonicModule } from '@ionic/angular';
   styleUrls: ['./transaction-card.component.scss'],
 })
 export class TransactionCardComponent implements OnInit {
-  @Input() category: string = 'shopping';
-  @Input() recordNote: string = 'Some grocery';
+  @Input() record: Record;
   @Input() icon: string = 'cart';
-  @Input() price: number = 320;
-  @Input() time: Date = new Date();
   @Input() set categoryColor(categoryColor) {
     this._categoryBgColor = this.classNames[categoryColor].bg;
     this._categoryTextColor = this.classNames[categoryColor].text;

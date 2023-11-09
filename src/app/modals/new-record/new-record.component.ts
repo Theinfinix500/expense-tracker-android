@@ -37,7 +37,7 @@ export class NewRecordComponent implements OnInit, OnDestroy {
   recordType: RecordType = RecordType.EXPENSE;
   paymentType: PaymentType = { label: 'Cash', value: 'cash' };
   selectedAccount: Account = {
-    label: 'CIH',
+    name: 'CIH',
     value: 'cih',
     type: 'Cash',
     backgroundColor: 'bg-sky-500',
@@ -58,12 +58,12 @@ export class NewRecordComponent implements OnInit, OnDestroy {
 
   async ngOnInit() {
     this.recordForm = this.fb.group({
-      account: 4,
-      category: 1,
+      account: null,
+      category: null,
       paymentType: 'Cash',
       recordType: RecordType.EXPENSE,
-      price: 120,
-      note: 'this is a simple note',
+      price: 0,
+      note: '',
       recordDate: new Date(),
     });
 
@@ -89,18 +89,15 @@ export class NewRecordComponent implements OnInit, OnDestroy {
     const modal = await this.openModal(AttachementsComponent, options);
 
     const { data, role } = await modal.onWillDismiss();
-
-    if (role === 'confirm') {
-      console.log(`Hello, ${data}!`);
-    }
   }
 
   async openAccountsModal() {
     const modal = await this.openModal(AccountsComponent);
-    const { data } = await modal.onWillDismiss();
+    const { data: account } = await modal.onWillDismiss();
 
-    if (data) {
-      this.selectedAccount = data;
+    if (account) {
+      this.selectedAccount = account;
+      this.recordForm.patchValue({ account: account.id });
     }
   }
 

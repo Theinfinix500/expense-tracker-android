@@ -101,7 +101,7 @@
         <!-- Account -->
         <app-select
           label="Account"
-          [selectedValue]="selectedAccount.label"
+          [selectedValue]="selectedAccount.name"
           (openModal)="openAccountsModal()"
         >
           <div
@@ -145,6 +145,7 @@
         class="h-[90px] mt-[10px] bg-white rounded-lg border border-gray-100"
       >
         <ion-textarea
+          placeholder="Note"
           formControlName="note"
           class="w-full h-full rounded-lg p-[10px] text-indigo-950 text-base font-medium font-['Inter'] outline-none"
         >

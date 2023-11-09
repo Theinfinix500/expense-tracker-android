@@ -1,9 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { IonicModule, ModalController } from '@ionic/angular';
+import { AccountsService } from 'src/app/services/accounts.service';
 
 export interface Account {
-  label: string;
+  name: string;
   value: string;
   type: string;
   backgroundColor: string;
@@ -17,23 +18,23 @@ export interface Account {
   styleUrls: ['./accounts.component.scss'],
 })
 export class AccountsComponent implements OnInit {
-  accounts: Account[] = [
-    {
-      label: 'CIH',
-      value: 'cih',
-      type: 'Cash',
-      backgroundColor: 'bg-sky-500',
-    },
-    {
-      label: 'Savings',
-      value: 'savings',
-      type: 'Saving account',
-      backgroundColor: 'bg-emerald-500',
-    },
-  ];
-  constructor(private modalCtrl: ModalController) {}
+  accounts: Account[] = [];
 
-  ngOnInit() {}
+  constructor(
+    private modalCtrl: ModalController,
+    private accountsService: AccountsService
+  ) {}
+
+  async ngOnInit() {
+    const { data: accounts } = await this.accountsService.getAccounts();
+    if (accounts) {
+      this.accounts = accounts.map((account) => ({
+        ...account,
+        name: account.account_name,
+        type: account.account_type,
+      }));
+    }
+  }
 
   closeModal() {
     this.modalCtrl.dismiss();
