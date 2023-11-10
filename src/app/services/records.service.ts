@@ -27,10 +27,11 @@ export class RecordsService {
         `*,
         paymentType:payment_type,
         recordDate:record_date,
-        recordType:record_type
-      , category:categories(*), account:accounts(*)`
+        recordType:record_type,
+        category:categories(*),
+        account:accounts(*)`
       )
-      .order('record_date')
+      .order('record_date', { ascending: false })
       .limit(5);
   }
 
@@ -45,7 +46,7 @@ export class RecordsService {
 
     const {
       account: record_account,
-      category: record_category,
+      category: { id: record_category },
       recordType: record_type,
       recordDate: record_date,
       paymentType: payment_type,
@@ -60,7 +61,7 @@ export class RecordsService {
         record_date,
         payment_type,
         record_user,
-        record_account,
+        record_account: record_account || 4,
         record_category,
       })
       .select()

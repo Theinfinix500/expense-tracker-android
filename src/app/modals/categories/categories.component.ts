@@ -12,6 +12,11 @@ import { IonicModule, ModalController } from '@ionic/angular';
 })
 export class CategoriesComponent implements OnInit {
   categories: any[] = [];
+  isSubcategory: boolean = false;
+  pageTitle = 'Category';
+  primaryTitle = 'most frequent';
+  secondaryTitle = 'all categories';
+  parent;
 
   constructor(
     private modalCtrl: ModalController,
@@ -19,10 +24,42 @@ export class CategoriesComponent implements OnInit {
   ) {}
 
   async ngOnInit() {
-    this.categories = (await this.categoriesService.getCategories()).data;
+    if (!this.isSubcategory) {
+      const { data: categories } = await this.categoriesService.getCategories();
+      if (categories) {
+        this.categories = categories;
+      }
+    }
   }
 
   closeModal() {
     this.modalCtrl.dismiss(1);
+  }
+
+  async showSubCategories(category) {
+    if (this.isSubcategory) {
+      this.modalCtrl.dismiss(category);
+      return;
+    }
+
+    const modal = await this.modalCtrl.create({
+      component: CategoriesComponent,
+      componentProps: {
+        isSubcategory: true,
+        categories: category.subCategories || [],
+        parent: category,
+        pageTitle: category.name,
+        primaryTitle: 'general',
+        secondaryTitle: 'subcategories',
+      },
+    });
+
+    await modal.present();
+    const { data } = await modal.onWillDismiss();
+
+    if (data) {
+      console.log(data);
+      this.modalCtrl.dismiss(data, '', 'categoryModal');
+    }
   }
 }

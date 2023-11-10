@@ -42,7 +42,6 @@ export class NewRecordComponent implements OnInit, OnDestroy {
     type: 'Cash',
     backgroundColor: 'bg-sky-500',
   };
-  selectedCategory;
   recordForm: FormGroup;
 
   constructor(
@@ -54,6 +53,10 @@ export class NewRecordComponent implements OnInit, OnDestroy {
 
   get recordDate() {
     return this.recordForm.get('recordDate').value;
+  }
+
+  get selectedCategory() {
+    return this.recordForm.get('category').value;
   }
 
   async ngOnInit() {
@@ -102,7 +105,9 @@ export class NewRecordComponent implements OnInit, OnDestroy {
   }
 
   async openCategoryModal() {
-    const modal = await this.openModal(CategoriesComponent);
+    const modal = await this.openModal(CategoriesComponent, {
+      id: 'categoryModal',
+    });
     const { data: category } = await modal.onWillDismiss();
 
     if (category) {

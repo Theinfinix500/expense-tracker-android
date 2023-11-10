@@ -11,9 +11,10 @@
       <div class="flex items-center">
         <ng-content select="ion-icon,.select-icon"></ng-content>
       </div>
-      <span class="text-indigo-950 text-base font-medium font-['Inter']">{{
-        selectedValue
-      }}</span>
+      <span
+        class="text-indigo-950 text-base font-medium font-['Inter'] whitespace-nowrap overflow-hidden text-ellipsis"
+        >{{ selectedValue }}</span
+      >
     </div>
   </div>
 </div>

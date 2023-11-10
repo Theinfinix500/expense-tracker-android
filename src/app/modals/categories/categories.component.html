@@ -6,9 +6,9 @@
       </ion-button>
     </ion-buttons>
     <ion-title>
-      <span class="text-white text-lg font-semibold font-['Inter']"
-        >Category</span
-      >
+      <span class="text-white text-lg font-semibold font-['Inter']">{{
+        pageTitle
+      }}</span>
     </ion-title>
     <ion-buttons slot="end">
       <ion-button>
@@ -24,12 +24,22 @@
   <!-- MOST FREQUENT -->
   <div class="bg-zinc-100 border-b border-neutral-300 flex items-center">
     <div
-      class="flex-1 px-[9px] py-3 text-neutral-500 text-sm font-semibold font-['Inter']"
+      class="flex-1 px-[9px] py-3 text-neutral-500 text-sm font-semibold font-['Inter'] uppercase"
     >
-      MOST FREQUENT
+      {{ primaryTitle }}
     </div>
   </div>
-  <div class="w-[360px] h-[147px] bg-white px-5 py-4">
+  <div
+    *ngIf="isSubcategory"
+    (click)="showSubCategories(parent)"
+    class="bg-white border-b border-neutral-300 flex items-center gap-4 px-4 py-[13px]"
+  >
+    <div class="w-10 h-10 bg-zinc-300 rounded-full"></div>
+    <div class="text-black text-base font-semibold font-['Inter']">
+      {{ parent?.name }}
+    </div>
+  </div>
+  <div *ngIf="!isSubcategory" class="w-[360px] h-[147px] bg-white px-5 py-4">
     <div class="w-80 h-[66px] justify-start items-start gap-6 inline-flex">
       <div class="flex flex-col items-center">
         <div class="w-10 h-10 bg-zinc-300 rounded-full"></div>
@@ -66,71 +76,22 @@
     class="flex items-center bg-zinc-100 border-t border-b border-neutral-300"
   >
     <div
-      class="flex-1 px-[9px] py-3 text-neutral-500 text-sm font-semibold font-['Inter']"
+      class="flex-1 px-[9px] py-3 text-neutral-500 text-sm font-semibold font-['Inter'] uppercase"
     >
-      ALL CATEGORIES
+      {{ secondaryTitle }}
     </div>
   </div>
   <div class="w-[360px] h-[462px]">
     <ng-container *ngFor="let category of categories">
       <div
-        *ngIf="category.category_parent === null"
+        (click)="showSubCategories(category)"
         class="bg-white border-b border-neutral-300 flex items-center gap-4 px-4 py-[13px]"
       >
         <div class="w-10 h-10 bg-zinc-300 rounded-full"></div>
         <div class="text-black text-base font-semibold font-['Inter']">
-          {{ category?.category_name }}
+          {{ category?.name }}
         </div>
       </div>
     </ng-container>
-
-    <div
-      class="bg-white border-b border-neutral-300 flex items-center gap-4 px-4 py-[13px]"
-    >
-      <div class="w-10 h-10 bg-zinc-300 rounded-full"></div>
-      <div class="text-black text-base font-semibold font-['Inter']">
-        Shopping
-      </div>
-    </div>
-    <div
-      class="bg-white border-b border-neutral-300 flex items-center gap-4 px-4 py-[13px]"
-    >
-      <div class="w-10 h-10 bg-zinc-300 rounded-full"></div>
-      <div class="text-black text-base font-semibold font-['Inter']">
-        Housing
-      </div>
-    </div>
-    <div
-      class="bg-white border-b border-neutral-300 flex items-center gap-4 px-4 py-[13px]"
-    >
-      <div class="w-10 h-10 bg-zinc-300 rounded-full"></div>
-      <div class="text-black text-base font-semibold font-['Inter']">
-        Transportation
-      </div>
-    </div>
-    <div
-      class="bg-white border-b border-neutral-300 flex items-center gap-4 px-4 py-[13px]"
-    >
-      <div class="w-10 h-10 bg-zinc-300 rounded-full"></div>
-      <div class="text-black text-base font-semibold font-['Inter']">
-        Vehicle
-      </div>
-    </div>
-    <div
-      class="bg-white border-b border-neutral-300 flex items-center gap-4 px-4 py-[13px]"
-    >
-      <div class="w-10 h-10 bg-zinc-300 rounded-full"></div>
-      <div class="text-black text-base font-semibold font-['Inter']">
-        Life & Entertainment
-      </div>
-    </div>
-    <div
-      class="bg-white border-b border-neutral-300 flex items-center gap-4 px-4 py-[13px]"
-    >
-      <div class="w-10 h-10 bg-zinc-300 rounded-full"></div>
-      <div class="text-black text-base font-semibold font-['Inter']">
-        Communication, PC
-      </div>
-    </div>
   </div>
 </ion-content>

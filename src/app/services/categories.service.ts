@@ -8,7 +8,21 @@ export class CategoriesService {
   constructor(private supabaseService: SupabaseService) {}
 
   getCategories() {
-    return this.supabaseService.supabase.from('categories').select('*');
+    return this.supabaseService.supabase
+      .from('categories')
+      .select(
+        `id,
+        name:category_name,
+        nature:category_nature,
+        is_visible,
+        parent:category_parent,
+        subCategories:categories(
+          id,
+          name:category_name,
+          nature:category_nature,
+          parent:category_parent(name:category_name))`
+      )
+      .is('category_parent', null);
   }
 
   // arrayToObject(data: any[]) {

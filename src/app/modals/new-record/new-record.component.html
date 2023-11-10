@@ -104,22 +104,14 @@
           [selectedValue]="selectedAccount.name"
           (openModal)="openAccountsModal()"
         >
-          <div
-            class="w-8 h-8 rounded-md border select-icon"
-            [ngClass]="selectedAccount.backgroundColor"
-          ></div>
         </app-select>
 
         <!-- Category -->
         <app-select
           label="Category"
-          selectedValue="Clothing"
+          [selectedValue]="selectedCategory?.name"
           (openModal)="openCategoryModal()"
         >
-          <div
-            class="w-8 h-8 rounded-full select-icon"
-            [ngClass]="selectedCategory?.backgroundColor"
-          ></div>
         </app-select>
 
         <!-- Payment Type -->
